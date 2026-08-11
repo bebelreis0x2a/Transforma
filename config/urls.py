@@ -18,10 +18,16 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 from app.views import *
+from app import views
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', views.home_view, name='home'),  # <--- Rota inicial da aplicação
     path('admin/', admin.site.urls),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('cadastro/pessoa/', views.cadastro_pessoa_view, name='cadastro_pessoa'),
+    path('cadastro/empresa/', views.cadastro_empresa_view, name='cadastro_empresa'),
 ]
 
 # Servir arquivos de mídia em ambiente de desenvolvimento

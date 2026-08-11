@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+</head>
+<body>
+    <h2>Cadastro de Pessoa Candidata</h2>
+
+    <!-- Exibe erros gerais e de validação dos campos -->
+    {% if form.errors %}
+        <div style="color: red;">
+            <strong>Atenção: Corrija os erros abaixo para continuar:</strong>
+            {{ form.errors }}
+        </div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} <!-- biblioteca importante para criptografia dos dados! -->
+        
+        <!-- Renderiza os campos de E-mail, Senha e dados do perfil -->
+        {{ form.as_p }}
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p>Já tem conta? <a href="{% url 'login' %}">Faça login aqui</a></p>
+</body>
+</html>

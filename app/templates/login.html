@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Acessar o Sistema</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Renderiza os campos nativos de Usuário (E-mail) e Senha -->
+        {{ form.as_p }}
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p>Ainda não tem conta?</p>
+    <ul>
+        <li><a href="{% url 'cadastro_pessoa' %}">Cadastrar como Pessoa</a></li>
+        <li><a href="{% url 'cadastro_empresa' %}">Cadastrar como Empresa</a></li>
+    </ul>
+</body>
+</html>
