@@ -1,3 +1,15 @@
+'''
+Dica super legal!
+
+Podemos criar um arquivo JSON para salvar os registros do Django Admin!
+
+Para salvar:
+python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 4 > dados.json
+
+Para carregar os dados salvos:
+python manage.py loaddata dados.json
+'''
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -70,7 +82,7 @@ class Sugestoes(models.Model):
     ]
 
     # O related_name permite a pesquisa inversa (vide linha 75).
-    pessoa = models.ForeignKey('Pessoas', on_delete=models.CASCADE, related_name="sugestoes", verbose_name="Candidato(a)") # Chave estrangeira de Pessoas.
+    pessoa = models.ForeignKey('Pessoas', on_delete=models.CASCADE, related_name="sugestoes", verbose_name="Pessoa") # Chave estrangeira de Pessoas.
     
     nome = models.CharField(max_length=100, blank=True, null=True, verbose_name="Nome")
     descricao = models.TextField(blank=True, null=True, verbose_name="Descrição")
@@ -168,7 +180,7 @@ class Vagas(models.Model):
     empresa = models.ForeignKey('Empresas', on_delete=models.CASCADE, related_name='vagas', verbose_name="Empresa") # Related_name é utilizado para a consulta inversa de um registro, permitindo usar a função empresa.vagas.all()!
     nome = models.CharField(max_length=100, verbose_name="Nome da vaga")
     descricao = models.TextField(verbose_name="Descrição")
-    salario = models.CharField(max_length=100, blank=True, null=True, verbose_name="Salário")
+    salario = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, blank=True, null=True, verbose_name="Salário")
     status = models.CharField(
         max_length=20, 
         choices=STATUS_CHOICES, 

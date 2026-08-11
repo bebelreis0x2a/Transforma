@@ -1,0 +1,1354 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$xgF9aYjfpkQKRtPY0oPkaV$S6PAj23yvj/0yjOTPyLf3nPEo4dy8d0MJCmNjmi2ofs=",
+        "last_login": "2026-08-09T20:32:09.653Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-08-09T20:30:57.934Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$yqwI0uDmgWlTzezzPad7Gd$UxPS9KgmluqqITVShwFSMhTIFP7NKaSiojtqlcLAeW8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "juhbittencourt@email.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-09T23:32:53.726Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$IBUUA7fzXJbzJJCrqn6sAf$fXls5DtQEsMMTAk42bxLgC1D7A67OPDVAhPkJjE2J1Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lohan@email.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-09T23:35:08.451Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$mKln9kYI5QZkecZ6jnl5uc$3ZryxRKFPhhG+dof+tVb7/VTPwlW/X40dszWa42COB0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "aries@email.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-09T23:37:20.121Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$VjOjoont1BQDO0DhSfG6cC$EK/c2aeoYmycvClXpneIjtu5/j3OJfr8unLKvdpr1rA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "marcoecia@email.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-10T21:31:14.689Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$fHMRqyN2W4PKeZwlpBU32b$Try/60czA72xtAcPu4TOnWmuSAuhuwcHLys1ISMOhDA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "terraviva@email.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-10T21:34:11.206Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$uKwbkUmWeNYCEAwX8vtC5K$w1ChJAk16NQGe1LdG3COthgJgNEvqLgIqQD3ZYenUsE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "intimamentebela@email.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-10T21:35:24.821Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "45jg7s2mx3yide8alyowds2n4rwcvwad",
+    "fields": {
+        "session_data": ".eJxVjEsOAiEQBe_C2pBGwAaX7j0D6eYjowaSYWZlvLtOMgvdvqp6LxFoXWpYR57DlMRZKHH43ZjiI7cNpDu1W5ext2WeWG6K3OmQ157y87K7fweVRv3WxmjjE1uDriQq1uic3QlQEWCMpfiiHDBbgojFH0GhIwvsvdXg0Brx_gDflDdR:1wtD1a:n15YonjWvLl3JnrTaQOpMuS3v3SQXh79Ed2i-JKvIlU",
+        "expire_date": "2026-08-23T23:33:50.408Z"
+    }
+},
+{
+    "model": "app.postagens",
+    "pk": 1,
+    "fields": {
+        "titulo": "Assunto 1",
+        "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis praesentium veniam eum iste nam. Sunt saepe quisquam neque earum atque necessitatibus numquam optio! Minima commodi tempore assumenda esse. Fugiat, ea.\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis praesentium veniam eum iste nam. Sunt saepe quisquam neque earum atque necessitatibus numquam optio! Minima commodi tempore assumenda esse. Fugiat, ea.",
+        "data_post": "2026-08-10T22:35:17.375Z",
+        "status": "Publicado"
+    }
+},
+{
+    "model": "app.postagens",
+    "pk": 2,
+    "fields": {
+        "titulo": "Assunto 2",
+        "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis praesentium veniam eum iste nam. Sunt saepe quisquam neque earum atque necessitatibus numquam optio! Minima commodi tempore assumenda esse. Fugiat, ea.\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis praesentium veniam eum iste nam. Sunt saepe quisquam neque earum atque necessitatibus numquam optio! Minima commodi tempore assumenda esse. Fugiat, ea.\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis praesentium veniam eum iste nam. Sunt saepe quisquam neque earum atque necessitatibus numquam optio! Minima commodi tempore assumenda esse. Fugiat, ea.",
+        "data_post": "2026-08-10T22:35:25.296Z",
+        "status": "Publicado"
+    }
+},
+{
+    "model": "app.postagens",
+    "pk": 3,
+    "fields": {
+        "titulo": "Assunto 3",
+        "conteudo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis praesentium veniam eum iste nam. Sunt saepe quisquam neque earum atque necessitatibus numquam optio! Minima commodi tempore assumenda esse. Fugiat, ea.",
+        "data_post": "2026-08-10T22:35:31.531Z",
+        "status": "Rascunho"
+    }
+},
+{
+    "model": "app.cursos",
+    "pk": 1,
+    "fields": {
+        "nome": "Curso de telemarketing",
+        "descricao": "Aprenda a negociar com seus atendentes! Especialização em atendimento ao cliente.",
+        "carga_horaria": "200",
+        "link_inscricao": "https://telemarketingbrasil.net/curso",
+        "data_cadastro": "2026-08-10"
+    }
+},
+{
+    "model": "app.cursos",
+    "pk": 2,
+    "fields": {
+        "nome": "Curso em lógica de programação - Curso em Vídeo",
+        "descricao": "Curso de lógica em programação e algoritmos através da ferramenta VisuAlg.",
+        "carga_horaria": "200",
+        "link_inscricao": "https://cursoemvideo.com.br/logicadeprogramacao",
+        "data_cadastro": "2026-08-10"
+    }
+},
+{
+    "model": "app.cursos",
+    "pk": 3,
+    "fields": {
+        "nome": "Produção profissional de áudios",
+        "descricao": "Aprenda a produzir áudios profissionalmente com a ferramenta Reaper!",
+        "carga_horaria": "200",
+        "link_inscricao": "https://producaoreaper.net",
+        "data_cadastro": "2026-08-10"
+    }
+},
+{
+    "model": "app.pessoas",
+    "pk": 1,
+    "fields": {
+        "usuario": [
+            "aries@email.com"
+        ],
+        "nome_social": "Aries dos Anjos",
+        "genero": "Homem Trans",
+        "pronomes": "Ele/Dele",
+        "data_nasc": "2006-08-08",
+        "foto_perfil": ""
+    }
+},
+{
+    "model": "app.pessoas",
+    "pk": 2,
+    "fields": {
+        "usuario": [
+            "juhbittencourt@email.com"
+        ],
+        "nome_social": "Júlia Bittencourt",
+        "genero": "Travesti",
+        "pronomes": "Ela/Dela",
+        "data_nasc": "2005-05-05",
+        "foto_perfil": ""
+    }
+},
+{
+    "model": "app.pessoas",
+    "pk": 3,
+    "fields": {
+        "usuario": [
+            "lohan@email.com"
+        ],
+        "nome_social": "Lohan Correia",
+        "genero": "Não binária",
+        "pronomes": "Ela/Elu",
+        "data_nasc": "2002-02-02",
+        "foto_perfil": ""
+    }
+},
+{
+    "model": "app.sugestoes",
+    "pk": 1,
+    "fields": {
+        "pessoa": 1,
+        "nome": "Vaga de administração trans friendly",
+        "descricao": "Vaga de administração na empresa XYZ, no período matutino, das 5h às 12h.",
+        "link": "https://empresaxyz.com.br/vaga_0123",
+        "data_envio": "2026-08-10T21:25:35.564Z",
+        "tipo": "Vaga"
+    }
+},
+{
+    "model": "app.sugestoes",
+    "pk": 2,
+    "fields": {
+        "pessoa": 2,
+        "nome": "Lógica de Programação - Curso em Vídeo",
+        "descricao": "Curso de lógica de programação e fundamentos de algoritmo do Curso em Vídeo.",
+        "link": "https://cursoemvideo.com.br/algoritmo",
+        "data_envio": "2026-08-10T21:26:35.843Z",
+        "tipo": "Curso"
+    }
+},
+{
+    "model": "app.sugestoes",
+    "pk": 3,
+    "fields": {
+        "pessoa": 3,
+        "nome": "Auxiliar de biblioteconomia",
+        "descricao": "Vaga trans friendly no Sebo & CIA, no período vespertino.",
+        "link": "https://seboecia.com.br/vaga222",
+        "data_envio": "2026-08-10T21:29:13.320Z",
+        "tipo": "Vaga"
+    }
+},
+{
+    "model": "app.curriculos",
+    "pk": 1,
+    "fields": {
+        "pessoa": 1,
+        "resumo": "Técnico em Informática pelo IFSULDEMINAS Campus Muzambinho. Desenvolvedor a mais de 5 anos.",
+        "competencias": "Bom comunicador e autodidata.",
+        "habilidades": "HTML, CSS, PHP, PostgreSQL, Python e Django.",
+        "formacao": "medio_completo"
+    }
+},
+{
+    "model": "app.curriculos",
+    "pk": 2,
+    "fields": {
+        "pessoa": 2,
+        "resumo": "Formada em Moda pela Univesp.",
+        "competencias": "Proativa e com raciocínio lógico apurado.",
+        "habilidades": "Costura, modelagem e design gráfico.",
+        "formacao": "superior_completo"
+    }
+},
+{
+    "model": "app.curriculos",
+    "pk": 3,
+    "fields": {
+        "pessoa": 3,
+        "resumo": "Estudante em Administração pela Estácio.",
+        "competencias": "Boa comunicadora e proativa.",
+        "habilidades": "Telemarketing, vendas, administração, RH.",
+        "formacao": "superior_incompleto"
+    }
+},
+{
+    "model": "app.empresas",
+    "pk": 1,
+    "fields": {
+        "usuario": [
+            "intimamentebela@email.com"
+        ],
+        "nome": "Intimamente Bela",
+        "cnpj": "23.012.132/0001-00",
+        "telefone": "(11) 4002-8922",
+        "endereco": "25 de Março, São Bento, São Paulo, SP",
+        "descricao": "Loja de lingerie para todas paulistanas.",
+        "site": "https://intimamentebela.com.br",
+        "verificada": true,
+        "foto_perfil": ""
+    }
+},
+{
+    "model": "app.empresas",
+    "pk": 2,
+    "fields": {
+        "usuario": [
+            "marcoecia@email.com"
+        ],
+        "nome": "Marco & CIA",
+        "cnpj": "21.012.133/0002-02",
+        "telefone": "(11) 2351-2222",
+        "endereco": "24 de Fevereiro, Brás, São Paulo, SP",
+        "descricao": "Cuide da sua saúde mental!",
+        "site": "https://marcoecia.com.br",
+        "verificada": true,
+        "foto_perfil": ""
+    }
+},
+{
+    "model": "app.empresas",
+    "pk": 3,
+    "fields": {
+        "usuario": [
+            "terraviva@email.com"
+        ],
+        "nome": "Terra Viva",
+        "cnpj": "10.002.100/1002-02",
+        "telefone": "(11) 2112-1212",
+        "endereco": "Júlio Buono, Vila Ede, São Paulo, SP",
+        "descricao": "Produtos orgânicos feitos com muito amor, de forma ecológica.",
+        "site": "https://terraviva.net",
+        "verificada": true,
+        "foto_perfil": ""
+    }
+},
+{
+    "model": "app.vagas",
+    "pk": 1,
+    "fields": {
+        "empresa": 1,
+        "nome": "Vaga para modelos",
+        "descricao": "Buscamos àquelas que gostariam de ser nossas modelos!",
+        "salario": "1200.00",
+        "status": "Deferida",
+        "data_criacao": "2026-08-10T21:51:59.534Z"
+    }
+},
+{
+    "model": "app.vagas",
+    "pk": 2,
+    "fields": {
+        "empresa": 2,
+        "nome": "Atendimento especializado para crianças",
+        "descricao": "Procuramos profissionais capacitados em terapia infantil.",
+        "salario": "5000.00",
+        "status": "Pendente",
+        "data_criacao": "2026-08-10T21:56:31.165Z"
+    }
+},
+{
+    "model": "app.vagas",
+    "pk": 3,
+    "fields": {
+        "empresa": 3,
+        "nome": "Vaga para técnicos em alimentos",
+        "descricao": "Procuramos especificamente estudantes do curso técnico em alimentos integrado ao ensino médio do Instituto Federal Campus Muzambinho!",
+        "salario": "1500.00",
+        "status": "Indeferida",
+        "data_criacao": "2026-08-10T22:02:35.826Z"
+    }
+},
+{
+    "model": "app.vagas",
+    "pk": 4,
+    "fields": {
+        "empresa": 1,
+        "nome": "Atendente",
+        "descricao": "Buscamos atendentes para a nossa unidade!",
+        "salario": "1500.00",
+        "status": "Deferida",
+        "data_criacao": "2026-08-10T22:06:03.730Z"
+    }
+},
+{
+    "model": "app.vagas",
+    "pk": 5,
+    "fields": {
+        "empresa": 2,
+        "nome": "Atendente online",
+        "descricao": "Buscamos atendentes para trabalharem home office, via WhatsApp.",
+        "salario": "2000.00",
+        "status": "Deferida",
+        "data_criacao": "2026-08-10T22:08:12.755Z"
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 1,
+    "fields": {
+        "vaga": 1,
+        "curso": null,
+        "pergunta": "A vaga é inclusiva para pessoas trans?",
+        "resposta": "Sim! Tanto para mulheres trans e travestis, quanto para pessoas não binárias!"
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 2,
+    "fields": {
+        "vaga": 2,
+        "curso": null,
+        "pergunta": "Vocês estão procurando apenas psicólogos?",
+        "resposta": "Não. Terapeutas e outros profissionais da saúde mental também podem se candidatar à vaga."
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 3,
+    "fields": {
+        "vaga": 3,
+        "curso": null,
+        "pergunta": "Por que apenas esse perfil poderá se candidatar?",
+        "resposta": "Porque só esses são capacitados..."
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 4,
+    "fields": {
+        "vaga": 4,
+        "curso": null,
+        "pergunta": "Qual o período de trabalho?",
+        "resposta": "Das 08h às 18h."
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 5,
+    "fields": {
+        "vaga": 5,
+        "curso": null,
+        "pergunta": "Há algum treinamento?",
+        "resposta": "Sim! Treinamos todos àqueles que serão contratados!"
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 6,
+    "fields": {
+        "vaga": null,
+        "curso": 1,
+        "pergunta": "O curso é pago?",
+        "resposta": "Não, ele é totalmente gratuito!"
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 7,
+    "fields": {
+        "vaga": null,
+        "curso": 2,
+        "pergunta": "Preciso ter algum conhecimento prévio?",
+        "resposta": "Não, o curso é introdutório ao mundo da programação."
+    }
+},
+{
+    "model": "app.faq",
+    "pk": 8,
+    "fields": {
+        "vaga": null,
+        "curso": 3,
+        "pergunta": "O Reaper é pago?",
+        "resposta": "Como ambiente de aprendizado, a DAW Reaper pode ser utilizada de forma gratuita em sua versão de amostra."
+    }
+},
+{
+    "model": "app.candidaturas",
+    "pk": 1,
+    "fields": {
+        "pessoa": 1,
+        "vaga": 4,
+        "data_inscricao": "2026-08-10",
+        "status_vaga": "Pendente"
+    }
+},
+{
+    "model": "app.candidaturas",
+    "pk": 2,
+    "fields": {
+        "pessoa": 2,
+        "vaga": 4,
+        "data_inscricao": "2026-08-10",
+        "status_vaga": "Deferida"
+    }
+},
+{
+    "model": "app.candidaturas",
+    "pk": 3,
+    "fields": {
+        "pessoa": 3,
+        "vaga": 1,
+        "data_inscricao": "2026-08-10",
+        "status_vaga": "Deferida"
+    }
+},
+{
+    "model": "app.candidaturas",
+    "pk": 4,
+    "fields": {
+        "pessoa": 1,
+        "vaga": 1,
+        "data_inscricao": "2026-08-10",
+        "status_vaga": "Indeferida"
+    }
+},
+{
+    "model": "app.candidaturas",
+    "pk": 5,
+    "fields": {
+        "pessoa": 2,
+        "vaga": 1,
+        "data_inscricao": "2026-08-10",
+        "status_vaga": "Indeferida"
+    }
+},
+{
+    "model": "app.avaliacoes",
+    "pk": 1,
+    "fields": {
+        "usuario": [
+            "aries@email.com"
+        ],
+        "nome": "Sem front-end.",
+        "descricao": "O site encontra-se sem nenhum front-end, nem um HTML...",
+        "pontos_positivos": "O Django Admin é incrível!",
+        "pontos_negativos": "O site está incompleto!",
+        "data_envio": "2026-08-10T22:10:51.587Z"
+    }
+},
+{
+    "model": "app.avaliacoes",
+    "pk": 2,
+    "fields": {
+        "usuario": [
+            "juhbittencourt@email.com"
+        ],
+        "nome": "Poucas vagas.",
+        "descricao": "O site encontra-se sem muitas vagas...",
+        "pontos_positivos": "As vagas disponíveis são muito úteis!",
+        "pontos_negativos": "Consegui me candidatar em poucas vagas...",
+        "data_envio": "2026-08-10T22:13:22.868Z"
+    }
+},
+{
+    "model": "app.avaliacoes",
+    "pk": 3,
+    "fields": {
+        "usuario": [
+            "terraviva@email.com"
+        ],
+        "nome": "Complexidade em adicionar vagas.",
+        "descricao": "Achamos a interface do Django Admin não muito apropriada!",
+        "pontos_positivos": "Conseguimos publicar uma vaga, sem problemas.",
+        "pontos_negativos": "É necessário que uma interface seja criada.",
+        "data_envio": "2026-08-10T22:14:59.524Z"
+    }
+},
+{
+    "model": "app.inscricoescursos",
+    "pk": 1,
+    "fields": {
+        "pessoa": 1,
+        "curso": 1,
+        "data_inscricao": "2026-08-10",
+        "status_curso": "Cursando"
+    }
+},
+{
+    "model": "app.inscricoescursos",
+    "pk": 2,
+    "fields": {
+        "pessoa": 2,
+        "curso": 2,
+        "data_inscricao": "2026-08-10",
+        "status_curso": "Concluido"
+    }
+},
+{
+    "model": "app.inscricoescursos",
+    "pk": 3,
+    "fields": {
+        "pessoa": 3,
+        "curso": 3,
+        "data_inscricao": "2026-08-10",
+        "status_curso": "Cursando"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-08-09T23:32:56.112Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "juhbittencourt@email.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-08-09T23:33:50.218Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "juhbittencourt@email.com",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-08-09T23:35:10.362Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "lohan@email.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-08-09T23:37:22.026Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "aries@email.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-08-09T23:39:19.709Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "pessoas"
+        ],
+        "object_id": "1",
+        "object_repr": "Aries dos Anjos",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-08-09T23:39:52.749Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "pessoas"
+        ],
+        "object_id": "2",
+        "object_repr": "Júlia Bittencourt",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-08-09T23:41:01.466Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "pessoas"
+        ],
+        "object_id": "3",
+        "object_repr": "Lohan Correia",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-08-10T21:25:35.752Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "sugestoes"
+        ],
+        "object_id": "1",
+        "object_repr": "[Vaga] Vaga de administração trans friendly",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-08-10T21:26:35.845Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "sugestoes"
+        ],
+        "object_id": "2",
+        "object_repr": "[Curso] Lógica de Programação - Curso em Vídeo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-08-10T21:29:13.322Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "sugestoes"
+        ],
+        "object_id": "3",
+        "object_repr": "[Vaga] Auxiliar de biblioteconomia",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-08-10T21:31:16.628Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "marcoecia@email.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-08-10T21:34:13.105Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "terraviva@email.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-08-10T21:35:26.711Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "8",
+        "object_repr": "intimamentebela@email.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-08-10T21:39:44.499Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "empresas"
+        ],
+        "object_id": "1",
+        "object_repr": "Intimamente Bela",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-08-10T21:41:16.469Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "empresas"
+        ],
+        "object_id": "2",
+        "object_repr": "Marco & CIA",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-08-10T21:43:14.115Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "empresas"
+        ],
+        "object_id": "3",
+        "object_repr": "Terra Viva",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-08-10T21:51:59.753Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "vagas"
+        ],
+        "object_id": "1",
+        "object_repr": "Vaga para modelos - Intimamente Bela",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Vaga para modelos): A vaga \\u00e9 inclusiva para pessoa...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-08-10T21:56:31.169Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "vagas"
+        ],
+        "object_id": "2",
+        "object_repr": "Atendimento especializado para crianças - Marco & CIA",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Atendimento especializado para crian\\u00e7as): Voc\\u00eas est\\u00e3o procurando apenas ...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-08-10T22:02:35.831Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "vagas"
+        ],
+        "object_id": "3",
+        "object_repr": "Vaga para técnicos em alimentos - Terra Viva",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Vaga para t\\u00e9cnicos em alimentos): Por que apenas esse perfil pod...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-08-10T22:06:03.734Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "vagas"
+        ],
+        "object_id": "4",
+        "object_repr": "Atendente - Intimamente Bela",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Atendente): Qual o per\\u00edodo de trabalho?...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-08-10T22:08:12.759Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "vagas"
+        ],
+        "object_id": "5",
+        "object_repr": "Atendente online - Marco & CIA",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Atendente online): H\\u00e1 algum treinamento?...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-08-10T22:08:33.079Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "candidaturas"
+        ],
+        "object_id": "1",
+        "object_repr": "Aries dos Anjos -> Atendente",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-08-10T22:08:41.239Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "candidaturas"
+        ],
+        "object_id": "2",
+        "object_repr": "Júlia Bittencourt -> Atendente",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-08-10T22:08:53.066Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "candidaturas"
+        ],
+        "object_id": "3",
+        "object_repr": "Lohan Correia -> Vaga para modelos",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-08-10T22:09:45.843Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "candidaturas"
+        ],
+        "object_id": "4",
+        "object_repr": "Aries dos Anjos -> Vaga para modelos",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-08-10T22:09:56.081Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "candidaturas"
+        ],
+        "object_id": "5",
+        "object_repr": "Júlia Bittencourt -> Vaga para modelos",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-08-10T22:10:51.613Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "avaliacoes"
+        ],
+        "object_id": "1",
+        "object_repr": "Avaliação de aries@email.com - Sem front-end.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-08-10T22:13:22.870Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "avaliacoes"
+        ],
+        "object_id": "2",
+        "object_repr": "Avaliação de juhbittencourt@email.com - Poucas vagas.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-08-10T22:14:59.526Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "avaliacoes"
+        ],
+        "object_id": "3",
+        "object_repr": "Avaliação de terraviva@email.com - Complexidade em adicionar vagas.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-08-10T22:19:41.264Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "curriculos"
+        ],
+        "object_id": "1",
+        "object_repr": "Currículo de Aries dos Anjos",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-08-10T22:21:58.406Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "curriculos"
+        ],
+        "object_id": "2",
+        "object_repr": "Currículo de Júlia Bittencourt",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-08-10T22:23:38.151Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "curriculos"
+        ],
+        "object_id": "3",
+        "object_repr": "Currículo de Lohan Correia",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-08-10T22:27:20.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "cursos"
+        ],
+        "object_id": "1",
+        "object_repr": "Curso de telemarketing",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Curso de telemarketing): O curso \\u00e9 pago?...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-08-10T22:29:21.814Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "cursos"
+        ],
+        "object_id": "2",
+        "object_repr": "Curso em lógica de programação - Curso em Vídeo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Curso em l\\u00f3gica de programa\\u00e7\\u00e3o - Curso em V\\u00eddeo): Preciso ter algum conhecimento...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-08-10T22:32:15.643Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "cursos"
+        ],
+        "object_id": "3",
+        "object_repr": "Produção profissional de áudios",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"FAQ\", \"object\": \"FAQ (Produ\\u00e7\\u00e3o profissional de \\u00e1udios): O Reaper \\u00e9 pago?...\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-08-10T22:32:35.851Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "inscricoescursos"
+        ],
+        "object_id": "1",
+        "object_repr": "Aries dos Anjos -> Curso de telemarketing",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-08-10T22:32:40.454Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "inscricoescursos"
+        ],
+        "object_id": "2",
+        "object_repr": "Júlia Bittencourt -> Curso em lógica de programação - Curso em Vídeo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-08-10T22:32:44.844Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "inscricoescursos"
+        ],
+        "object_id": "3",
+        "object_repr": "Lohan Correia -> Produção profissional de áudios",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-08-10T22:35:17.419Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "postagens"
+        ],
+        "object_id": "1",
+        "object_repr": "Assunto 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2026-08-10T22:35:25.301Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "postagens"
+        ],
+        "object_id": "2",
+        "object_repr": "Assunto 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2026-08-10T22:35:31.534Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "app",
+            "postagens"
+        ],
+        "object_id": "3",
+        "object_repr": "Assunto 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+}
+]
