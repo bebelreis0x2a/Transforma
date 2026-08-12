@@ -1,90 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta name="description" content="Uma plataforma de networking profissional voltada às pessoas trans.">
-	<meta name="keywords" content="networking, trabalho, trans, travesti, vagas, cursos">
-	<meta name="author" content="Arthur Ferreira, Guilherme Anacleto, Marco Leite e Sophia Bastos">
-	<meta name="robots" content="index, follow"> <!-- Indicar que o conteúdo do site pode ser exibido pelos buscadores de sites, como Google, DuckDuckGo, etc. -->
+    <meta name="description" content="Uma plataforma de networking profissional voltada às pessoas trans.">
+    <meta name="keywords" content="networking, trabalho, trans, travesti, vagas, cursos">
+    <meta name="author" content="Arthur Ferreira, Guilherme Anacleto, Marco Leite e Sophia Bastos">
+    <meta name="robots" content="index, follow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}TRANSFORMA{% endblock %}</title>
 
-    <!-- Bootstrap 5 & Bootstrap Icons -->
+    <!-- Bootstrap 5 CSS & Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Fonte: Turn Me Into A Girl!-->
     <link href="https://fonts.googleapis.com/css?family=Eczar|Kalam|Merriweather" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+
     <style>
-        body {
-            /* Fundo com degradê horizontal característico da imagem */
-            background-color: rgb(148, 13, 148);
-            color: black;
-            display: flex;
-            flex-direction: column;
+        body{
+            background-color: purple;
             font-family: "Roboto", sans-serif;
         }
 
-        main{ font-family: 'Merriweather', serif; font-weight: lighter; }
-
-        /* Logo Transforma estilizada */
-        .brand-logo {
-            font-weight: 900; /* Deixa o texto em negrito */
-            font-style: italic;
-            font-size: 25pt;
-            letter-spacing: 1px;
-            text-decoration: none;
-        }
-
-        .brand-logo:hover{
-            transform: translateY(2px);
-        }
-
-        /* Pílulas de Navegação (Botões do Menu) */
-        .nav-pill-custom {
-            background-color: white;
-            color: black;
-            font-weight: 500;
-            font-size: 12pt;
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: 0 5px rgba(0, 0, 0, 0.15);
-            text-decoration: none;
-        }
-
-        .nav-pill-custom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px rgba(0, 0, 0, 0.25);
-            background-color: whitesmoke;
-            color: porple;
-        }
-
-        /* Saudação do Usuário */
-        .user-greeting {
-            color: white;
-            font-weight: 800;
-            font-size: 12pt;
-            letter-spacing: 0.8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .user-avatar {
-            width: 45px;
-            height: 45px;
-            box-shadow: 0 5px rgba(0,0,0,0.2);
-        }
-
-        /* Card Principal Estilizado com Borda em Gradiente */
-        .main-card {
-            background-color: white;
-            border-radius: 28px;
-            padding: 3rem; /*Tamanho de padding conforme o tamanho da fonte -*/
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        main{ 
+            font-family: 'Merriweather', 
+            serif; font-weight: lighter; 
         }
 
         /* Efeito de moldura ciano/rosa envolvente */
@@ -95,68 +39,82 @@
             box-shadow: 0 10px rgba(0,0,0,0.3);
         }
 
-        footer {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.85rem;
-        }
     </style>
-    {% block extra_css %}{% endblock %}
 </head>
-<body>
-    <!-- NAVBAR HEADER -->
-    <header class="py-3">
-        <div class="container-fluid px-lg-5">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+<body class="text-dark d-flex flex-column min-vh-100">
+
+    <!-- HEADER / NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark py-3">
+            <div class="container-fluid px-3 px-lg-5">
                 
-                <!-- LOGO -->
-                <a href="{% url 'home' %}" class="brand-logo">
+                <!-- TÍTULO / LOGO -->
+                <a href="{% url 'home' %}" class="navbar-brand fw-bold fs-2 text-uppercase fst-italic me-auto me-lg-4">
                     <span style="color: lightskyblue;">TR</span><span style="color: pink;">AN</span><span style="color: white;">SF</span><span style="color: pink;">OR</span><span style="color: lightskyblue;">MA</span>
                 </a>
 
-                <!-- MENU DE NAVEGAÇÃO -->
-                <nav class="d-flex flex-wrap gap-2 justify-content-center my-2 my-md-0">
-                    <a href="#" class="nav-pill-custom">Currículo</a>
-                    <a href="#" class="nav-pill-custom">Vagas</a>
-                    <a href="#" class="nav-pill-custom">Cursos</a>
-                    <a href="#" class="nav-pill-custom">Informações</a>
-                </nav>
+                <!-- BOTÃO HAMBÚRGUER (MOBILE) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTransforma" aria-controls="navbarTransforma" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                <!-- ÁREA DE PERFIL DO USUÁRIO / AUTENTICAÇÃO -->
-                <div class="d-flex align-items-center gap-3">
-                    {% if request.user.is_authenticated %}
-                        <span class="user-greeting">
-                            Olá, {% if request.user.perfil.nome_social %}{{ request.user.perfil.nome_social }}{% elif request.user.empresa.nome %}{{ request.user.empresa.nome }}{% else %}{{ request.user.username }}{% endif %}
-                        </span>
+                <!-- CONTEÚDO EXPANSÍVEL DA NAVBAR -->
+                <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarTransforma">
+                    
+                    <!-- BOTÕES DE NAVEGAÇÃO -->
+                    <ul class="navbar-nav mx-auto d-flex flex-column flex-lg-row gap-2 align-items-center mb-3 mb-lg-0">
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a href="#" class="btn btn-light rounded-pill px-4 fw-semibold text-dark shadow-sm w-100">Currículo</a>
+                        </li>
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a href="#" class="btn btn-light rounded-pill px-4 fw-semibold text-dark shadow-sm w-100">Vagas</a>
+                        </li>
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a href="#" class="btn btn-light rounded-pill px-4 fw-semibold text-dark shadow-sm w-100">Cursos</a>
+                        </li>
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a href="#" class="btn btn-light rounded-pill px-4 fw-semibold text-dark shadow-sm w-100">Informações</a>
+                        </li>
+                    </ul>
 
-                        <!-- Foto de perfil ou Ícone padrão -->
-                        {% if request.user.perfil.foto_perfil %}
-                            <img src="{{ request.user.perfil.foto_perfil.url }}" alt="Foto de perfil" class="user-avatar">
-                        {% elif request.user.empresa.foto_perfil %}
-                            <img src="{{ request.user.empresa.foto_perfil.url }}" alt="Logo empresa" class="user-avatar">
+                    <!-- ÁREA DO USUÁRIO / AUTENTICAÇÃO -->
+                    <div class="d-flex align-items-center justify-content-center gap-3 pt-3 pt-lg-0 border-top border-lg-0 border-white-50">
+                        {% if request.user.is_authenticated %}
+                            <span class="text-white fw-bold fs-6">
+                                Olá, {% if request.user.perfil.nome_social %}{{ request.user.perfil.nome_social }}{% elif request.user.empresa.nome %}{{ request.user.empresa.nome }}{% else %}{{ request.user.username }}{% endif %}
+                            </span>
+
+                            <!-- Foto de perfil ou Ícone padrão -->
+                            {% if request.user.perfil.foto_perfil %}
+                                <img src="{{ request.user.perfil.foto_perfil.url }}" alt="Foto de perfil" class="rounded-circle border border-2 border-white shadow-sm" style="width: 42px; height: 42px; object-fit: cover;">
+                            {% elif request.user.empresa.foto_perfil %}
+                                <img src="{{ request.user.empresa.foto_perfil.url }}" alt="Logo empresa" class="rounded-circle border border-2 border-white shadow-sm" style="width: 42px; height: 42px; object-fit: cover;">
+                            {% else %}
+                                <i class="bi bi-person-circle fs-2 text-white"></i>
+                            {% endif %}
+
+                            <!-- Botão de Sair -->
+                            <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm p-2" title="Sair">
+                                <i class="bi bi-box-arrow-right"></i>
+                            </a>
+
                         {% else %}
-                            <i class="bi bi-person-circle fs-2 text-white"></i>
+                            <!-- Caso não esteja logado -->
+                            <a href="{% url 'login' %}" class="btn btn-light rounded-pill px-4 fw-semibold text-dark shadow-sm">Entrar</a>
+                            <a href="{% url 'cadastro_pessoa' %}" class="btn btn-light rounded-pill px-4 fw-semibold text-dark shadow-sm">Cadastrar</a>
                         {% endif %}
+                    </div>
 
-                        <!-- Botão de Sair -->
-                        <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-light p-2 ms-1" title="Sair">
-                            <i class="bi bi-box-arrow-right"></i>
-                        </a>
-
-                    {% else %}
-                        <!-- Caso não esteja logado -->
-                        <a href="{% url 'login' %}" class="nav-pill-custom">Entrar</a>
-                        <a href="{% url 'cadastro_pessoa' %}" class="nav-pill-custom">Cadastrar</a>
-                    {% endif %}
                 </div>
 
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- CONTEÚDO PRINCIPAL (BALÃO CENTRAL) -->
     <main class="container my-auto py-4">
         <div class="main-card-wrapper">
-            <div class="main-card text-center">
+            <div class="bg-white rounded-5 p-4 p-md-5 shadow-lg text-center">
                 {% block content %}
                 <!-- Conteúdo dinâmico das páginas entra aqui -->
                 {% endblock %}
@@ -164,14 +122,15 @@
         </div>
     </main>
 
-    <!-- RODAPÉ -->
-    <footer class="py-3 text-center mt-auto">
+    <!-- RODAPÉ SIMPLES -->
+    <footer class="py-3 text-center text-white mt-auto">
         <div class="container">
-            <p class="mb-0">&copy; 2026 <strong>TRANSFORMA</strong> — Todos os direitos reservados.</p>
-            <p class="mb-0 opacity-75 small">IFSULDEMINAS - Campus Muzambinho | Técnico em Informática Integrado ao Ensino Médio</p>
+            <p class="mb-1">&copy; 2026 <strong>TRANSFORMA</strong> — Todos os direitos reservados.</p>
+            <p class="mb-0 small opacity-75">IFSULDEMINAS - Campus Muzambinho | Técnico em Informática Integrado ao Ensino Médio</p>
         </div>
     </footer>
 
+    <!-- Bootstrap JS (Necessário para a interatividade do menu hambúrguer) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     {% block extra_js %}{% endblock %}
 </body>
