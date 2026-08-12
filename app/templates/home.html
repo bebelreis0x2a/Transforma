@@ -1,12 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela inicial</title>
-</head>
-<body>
-    <h1>Deu certo!</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse neque incidunt quae sequi culpa doloremque in, deserunt laboriosam cum asperiores fuga odit saepe id eveniet iure assumenda dolor facere quibusdam.</p>
-</body>
-</html>
+<!--
+#
+#        ｜￣￣￣￣￣￣￣￣￣￣｜
+#        ｜　ｙｏｕ　ａｒｅ　　｜
+#        ｜　ｖａｌｉｄ　ｎｏ　｜
+#        ｜ｍａｔｔｅｒ　ｗｈｏ｜
+#        ｜　ｙｏｕ　ａｒｅ，　｜
+#        ｜ｎｏ　ｍａｔｔｅｒ　｜
+#        ｜　ｗｈａｔ　ｙｏｕ　｜
+#        ｜　　　ｗａｎｔ　　　｜
+#        ｜＿＿＿＿＿＿＿＿＿＿｜
+#        (\_❀) ||
+#        (•ㅅ•) ||
+#        / 　 づ
+#
+-->
+{% extends 'base.html' %}
+
+{% block title %}Início - TRANSFORMA{% endblock %}
+
+{% block content %}
+    <div class="py-4">
+        <!-- Ilustração / Arte de Boas-vindas -->
+        <div class="mb-4">
+            <h1 class="display-3 fw-bold text-dark position-relative d-inline-block">
+                Boas-vindas!
+            </h1>
+        </div>
+
+        <figure>
+            <img src="../static/img/trans-heart.png" alt="Imagem da bandeira trans em formato de coração." width="10%">
+        </figure>
+
+        <p class="lead text-secondary mx-auto" style="font-weight: 500;">
+            Somos uma iniciativa pensada em ajudar pessoas trans a se inserirem ao mercado de trabalho, além de facilitar na capacitação e na divulgação de direitos, cartilhas e oportunidades.
+        </p>
+    </div>
+{% endblock %}
