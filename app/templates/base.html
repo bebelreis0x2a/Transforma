@@ -78,7 +78,7 @@
                     </ul>
 
                     <!-- ÁREA DO USUÁRIO / AUTENTICAÇÃO -->
-                    <div class="d-flex align-items-center justify-content-center gap-3 pt-3 pt-lg-0 border-top border-lg-0 border-white-50">
+                    <div class="d-flex align-items-center justify-content-center gap-3 pt-3 pt-lg-0">
                         {% if request.user.is_authenticated %}
                             <span class="text-white fw-bold fs-6">
                                 Olá, {% if request.user.perfil.nome_social %}{{ request.user.perfil.nome_social }}{% elif request.user.empresa.nome %}{{ request.user.empresa.nome }}{% else %}{{ request.user.username }}{% endif %}

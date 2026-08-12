@@ -43,12 +43,29 @@
                     <p class="text-muted small mb-4">Acesse sua conta para continuar</p>
 
                     <!-- FORMULÁRIO -->
+                    {% load widget_tweaks %} <!-- 1. IMPORTANTE: Carrega a biblioteca no topo do arquivo -->
+
                     <form method="POST" class="text-start">
                         {% csrf_token %}
                         
-                        <div class="mb-3">
-                            {{ form.as_p }} <!-- Renderiza os campos nativos de Usuário (E-mail) e Senha -->
-                        </div>
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <!-- Renderiza a label com a classe do Bootstrap -->
+                                <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+                                    {{ field.label }}
+                                </label>
+                                
+                                <!-- Injeta a classe form-control diretamente no input do Django -->
+                                {{ field|add_class:"form-control py-2" }}
+                                
+                                <!-- Exibe erros de validação caso existam -->
+                                {% if field.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ field.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
 
                         <div class="d-grid gap-2 mt-4">
                             <button type="submit" class="btn btn-primary rounded-pill py-2 fw-bold fs-5 shadow-sm">
@@ -56,6 +73,7 @@
                             </button>
                         </div>
                     </form>
+
 
                     <hr class="my-4 text-muted">
 
