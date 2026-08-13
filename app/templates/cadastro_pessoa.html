@@ -2,28 +2,82 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Pessoa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TRANSFORMA</title>
+
+    <!-- Fonte: Turn Me Into A Girl!-->
+    <link href="https://fonts.googleapis.com/css?family=Eczar|Kalam|Merriweather" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+        <style>
+        body{
+            background-color: purple;
+            font-family: 'Merriweather', 
+            serif; font-weight: lighter;       
+        }
+    </style>
 </head>
-<body>
-    <h2>Cadastro de Pessoa Candidata</h2>
+<body class="d-flex align-items-center justify-content-center min-vh-100 py-4">
 
-    <!-- Exibe erros gerais e de validação dos campos -->
-    {% if form.errors %}
-        <div style="color: red;">
-            <strong>Atenção: Corrija os erros abaixo para continuar:</strong>
-            {{ form.errors }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+                
+                <!-- CARD CENTRALIZADO -->
+                <div class="rounded-5 p-4 p-md-5 shadow-lg text-center bg-white">
+                    
+                    <!-- TÍTULO / LOGO -->
+                    <h1 class="fs-2 text-uppercase"><span style="color: lightskyblue;">TR</span><span style="color: pink;">AN</span><span style="color: white;">SF</span><span style="color: pink;">OR</span><span style="color: lightskyblue;">MA</span></h1>
+                    <p class="text-muted small mb-4">Acesse sua conta para continuar</p>
+
+                    <!-- FORMULÁRIO -->
+                    {% load widget_tweaks %} <!-- 1. IMPORTANTE: Carrega a biblioteca no topo do arquivo -->
+
+                    <form method="POST" class="text-start">
+                        {% csrf_token %}
+                        
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <!-- Renderiza a label com a classe do Bootstrap -->
+                                <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+                                    {{ field.label }}
+                                </label>
+                                
+                                <!-- Injeta a classe form-control diretamente no input do Django -->
+                                {{ field|add_class:"form-control py-2" }}
+                                
+                                <!-- Exibe erros de validação caso existam -->
+                                {% if field.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {{ field.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success rounded-pill py-2 fw-bold fs-5 shadow-sm">
+                                Cadastrar
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <a href="{% url 'login' %}" class="btn">Voltar</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endif %}
+    </div>
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %} <!-- biblioteca importante para criptografia dos dados! -->
-        
-        <!-- Renderiza os campos de E-mail, Senha e dados do perfil -->
-        {{ form.as_p }}
-
-        <button type="submit">Cadastrar</button>
-    </form>
-
-    <p>Já tem conta? <a href="{% url 'login' %}">Faça login aqui</a></p>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
