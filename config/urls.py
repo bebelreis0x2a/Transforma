@@ -28,6 +28,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('cadastro/pessoa/', views.cadastro_pessoa_view, name='cadastro_pessoa'),
     path('cadastro/empresa/', views.cadastro_empresa_view, name='cadastro_empresa'),
+    path('curriculo/', views.curriculo_view, name='curriculo'),
 ]
 
 # Servir arquivos de mídia em ambiente de desenvolvimento

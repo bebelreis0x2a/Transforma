@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}Meu Currículo - TRANSFORMA{% endblock %}
+
+{% block content %}
+<div class="container py-4 text-start"> <!-- text-start: deixa os textos à direita -->
+    <h2 class="fw-bold mb-4" style="color: purple"><i class="bi bi-file-person me-2"></i>Meu Currículo</h2>
+
+    <!-- NAUVEGAÇÃO POR ABAS (BOOTSTRAP) -->
+    <ul class="nav nav-tabs mb-4" id="curriculoTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-semibold" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados-pane" type="button" role="tab">
+                <i class="bi bi-person-lines-fill me-1"></i>Dados Gerais
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-semibold" id="diplomas-tab" data-bs-toggle="tab" data-bs-target="#diplomas-pane" type="button" role="tab">
+                <i class="bi bi-patch-check-fill me-1"></i>Diplomas e Certificados
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="curriculoTabContent">
+        
+        <!-- ABA 1: DADOS DO CURRÍCULO -->
+        <div class="tab-pane fade show active" id="dados-pane" role="tabpanel">
+            <form method="POST" action="{% url 'curriculo' %}">
+                {% csrf_token %}
+                <input type="hidden" name="acao" value="salvar_curriculo">
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Resumo Profissional</label>
+                    <textarea name="resumo" class="form-control rounded-3" rows="3" placeholder="Fale um pouco sobre suas habilidades e objetivos...">{{ curriculo.resumo|default:'' }}</textarea>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6">
+                        <label class="form-label fw-bold">Escolaridade / Formação</label>
+                        <select name="formacao" class="form-select rounded-pill" required>
+                            <option value="" disabled {% if not curriculo.formacao %}selected{% endif %}>Selecione uma opção...</option>
+                            {% for chave, valor in formacao_choices %}
+                                <option value="{{ chave }}" {% if curriculo.formacao == chave %}selected{% endif %}>
+                                    {{ valor }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-bold">Área de Interesse</label>
+                        <input type="text" name="area_interesse" class="form-control rounded-pill" value="{{ curriculo.area_interesse|default:'' }}" placeholder="Ex: Tecnologia, Vendas, Administração">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Experiências Anteriores</label>
+                    <textarea name="experiencias" class="form-control rounded-3" rows="4" placeholder="Descreva suas experiências profissionais anteriores...">{{ curriculo.experiencias|default:'' }}</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">
+                    <i class="bi bi-check-circle me-1"></i>Salvar Currículo
+                </button>
+            </form>
+        </div>
+
+        <!-- ABA 2: GERENCIAR DIPLOMAS -->
+        <div class="tab-pane fade" id="diplomas-pane" role="tabpanel">
+            
+            <!-- FORMULÁRIO DE ENVIAR DIPLOMA -->
+            <div class="card bg-light border-0 rounded-4 p-3 mb-4">
+                <h5 class="fw-bold text-secondary mb-3"><i class="bi bi-upload me-2"></i>Adicionar Novo Diploma / Certificado</h5>
+                
+                <form method="POST" enctype="multipart/form-data" action="{% url 'curriculo' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="acao" value="salvar_diploma">
+
+                    <div class="row g-3 align-items-end">
+                        <div class="col-12 col-md-5">
+                            <label class="form-label small fw-bold">Título do Curso/Certificado</label>
+                            <input type="text" name="titulo" class="form-control rounded-pill" placeholder="Ex: Curso de Python Básico" required>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="form-label small fw-bold">Arquivo (PDF ou Imagem)</label>
+                            <input type="file" name="arquivo" class="form-control rounded-pill" required>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button type="submit" class="btn btn-success rounded-pill w-100 fw-bold">
+                                <i class="bi bi-plus-lg me-1"></i>Anexar Diploma
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- LISTAGEM DOS DIPLOMAS ANEXADOS -->
+            <h5 class="fw-bold text-secondary mb-3">Seus Diplomas Anexados</h5>
+            <div class="list-group rounded-3 shadow-sm">
+                {% for diploma in diplomas %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <div>
+                            <i class="bi bi-file-earmark-pdf text-danger me-2 fs-5"></i>
+                            <span class="fw-semibold">{{ diploma.titulo }}</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            {% if diploma.arquivo %}
+                                <a href="{{ diploma.arquivo.url }}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </a>
+                            {% endif %}
+
+                            <!-- FORMULÁRIO PARA DELETAR DIPLOMA -->
+                            <form method="POST" action="{% url 'curriculo' %}" class="mb-0" onsubmit="return confirm('Tem certeza que deseja remover este diploma?');">
+                                {% csrf_token %}
+                                <input type="hidden" name="acao" value="deletar_diploma">
+                                <input type="hidden" name="diploma_id" value="{{ diploma.id }}">
+                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill">
+                                    <i class="bi bi-trash-fill"></i> Excluir
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="list-group-item text-muted text-center py-4">
+                        Nenhum diploma ou certificado cadastrado ainda.
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
