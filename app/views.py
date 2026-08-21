@@ -64,23 +64,25 @@ def home_view(request):
 
 @login_required
 def curriculo_view(request):
-    if not hasattr(request.user, 'perfil'):
-        messages.error(request, "Acesso restrito apenas para candidatos.")
-        return redirect('home')
+    if not hasattr(request.user, 'perfil'): # se o atributo do usuário não for perfil, que são as Pessoas (classe Pessoas na model, relative_name):
+        messages.error(request, "Acesso restrito apenas para candidatos.") # retorne essa mensagem de erro
+        return redirect('home') # volta para a home
 
-    curriculo, _ = Curriculos.objects.get_or_create(pessoa=request.user.perfil)
+    curriculo, _ = Curriculos.objects.get_or_create(pessoa=request.user.perfil) # Essa função procura se o usuário tem currículo, retornando ou criando um caso não tenha
+    # Essa função retorna uma tupla, contendo o objeto criado e um valor booleano (true or false). O _ pega esse valor booleano e desarta, pois não utilizaremos.
+
 
     if request.method == 'POST':
-        acao = request.POST.get('acao')
+        acao = request.POST.get('acao') # tem um input escondido em 'curriculo.html' que retorna a ação do usuário, ou seja, qual botão ele clicou
 
         # 1. Ação de Salvar Diploma
         if acao == 'salvar_diploma':
-            titulo = request.POST.get('titulo')
-            arquivo = request.FILES.get('arquivo')
+            titulo = request.POST.get('titulo') # pega o título do diploma
+            arquivo = request.FILES.get('arquivo') # pega o arquivo do diploma
             if titulo and arquivo:
-                Diplomas.objects.create(curriculo=curriculo, titulo=titulo, arquivo=arquivo)
-                messages.success(request, "Diploma adicionado com sucesso!")
-            return redirect('curriculo')
+                Diplomas.objects.create(curriculo=curriculo, titulo=titulo, arquivo=arquivo) # salva no banco de dados
+                messages.success(request, "Diploma adicionado com sucesso!") # mensagem para o Django Admin
+            return redirect('curriculo') # atualiza a página
 
         # 2. Ação de Deletar Diploma
         elif acao == 'deletar_diploma':
@@ -101,11 +103,11 @@ def curriculo_view(request):
             messages.success(request, "Currículo atualizado com sucesso!")
             return redirect('curriculo')
 
-    diplomas = curriculo.diplomas.all() if hasattr(curriculo, 'diplomas') else curriculo.diploma_set.all()
+    diplomas = curriculo.diplomas.all()
 
     context = {
         'curriculo': curriculo,
         'diplomas': diplomas,
-        'formacao_choices': Curriculos.FORMACAO_CHOICES,
+        'formacao_choices': Curriculos.FORMACAO_CHOICES, # Permite selecionar, em um input de seleções (select), as opções pré-inseridas no banco de dados!
     }
     return render(request, 'curriculo.html', context)

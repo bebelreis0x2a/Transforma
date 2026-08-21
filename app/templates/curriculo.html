@@ -9,13 +9,14 @@
     <!-- NAUVEGAÇÃO POR ABAS (BOOTSTRAP) -->
     <ul class="nav nav-tabs mb-4" id="curriculoTab" role="tablist">
         <li class="nav-item" role="presentation">
+            <!-- usamos o data-bs-target para mudar de uma aba à outra dos formulários, pois ele integra css com js -->
             <button class="nav-link active fw-semibold" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados-pane" type="button" role="tab">
-                <i class="bi bi-person-lines-fill me-1"></i>Dados Gerais
+                <span class="bi bi-person-lines-fill me-1"><blockquote>Dados Gerais</blockquote></span> <!-- o blockquote deixa o texto embaixo do ícone! -->
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link fw-semibold" id="diplomas-tab" data-bs-toggle="tab" data-bs-target="#diplomas-pane" type="button" role="tab">
-                <i class="bi bi-patch-check-fill me-1"></i>Diplomas e Certificados
+                <span class="bi bi-patch-check-fill me-1"><blockquote>Diplomas e Certificados</blockquote></span>
             </button>
         </li>
     </ul>
@@ -39,7 +40,7 @@
                         <label class="form-label fw-bold">Escolaridade / Formação</label>
                         <select name="formacao" class="form-select rounded-pill" required>
                             <option value="" disabled {% if not curriculo.formacao %}selected{% endif %}>Selecione uma opção...</option>
-                            {% for chave, valor in formacao_choices %}
+                            {% for chave, valor in formacao_choices %} <!-- é o meu enum na classe curriculo -->
                                 <option value="{{ chave }}" {% if curriculo.formacao == chave %}selected{% endif %}>
                                     {{ valor }}
                                 </option>
