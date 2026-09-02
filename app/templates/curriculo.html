@@ -49,14 +49,14 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label class="form-label fw-bold">Área de Interesse</label>
-                        <input type="text" name="area_interesse" class="form-control rounded-pill" value="{{ curriculo.area_interesse|default:'' }}" placeholder="Ex: Tecnologia, Vendas, Administração">
+                        <label class="form-label fw-bold">Habilidades</label>
+                        <input type="text" name="habilidades" class="form-control rounded-pill" value="{{ curriculo.habilidades|default:'' }}" placeholder="Ex: Tecnologia, Vendas, Administração">
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label class="form-label fw-bold">Experiências Anteriores</label>
-                    <textarea name="experiencias" class="form-control rounded-3" rows="4" placeholder="Descreva suas experiências profissionais anteriores...">{{ curriculo.experiencias|default:'' }}</textarea>
+                    <label class="form-label fw-bold">Competências</label>
+                    <textarea name="competencias" class="form-control rounded-3" rows="4" placeholder="Descreva suas experiências profissionais anteriores...">{{ curriculo.competencias|default:'' }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">
