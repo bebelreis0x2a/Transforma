@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Gerenciar Vagas - TRANSFORMA{% endblock %}
+
+{% block content %}
+<div class="text-start">
+    <h2 class="fw-bold mb-3">Cadastrar Nova Vaga</h2>
+    
+    <form method="POST" class="bg-light p-4 rounded-4 shadow-sm mb-5">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Nome da Vaga</label>
+            <input type="text" name="nome" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Descrição da Vaga</label>
+            <textarea name="descricao" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Salário (Opcional)</label>
+            <input type="number" step="0.01" name="salario" class="form-control" placeholder="0.00">
+        </div>
+        <button type="submit" class="btn btn-success rounded-pill px-4">Submeter Vaga</button>
+    </form>
+
+    <h2 class="fw-bold mb-3">Vagas Cadastradas</h2>
+    {% for vaga in minhas_vagas %}
+        <div class="border rounded-4 p-3 mb-3 bg-white shadow-sm d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="fw-bold mb-1">{{ vaga.nome }}</h5>
+                <p class="mb-0 text-muted">{{ vaga.descricao|truncatewords:15 }}</p>
+            </div>
+            <div>
+                {% if vaga.status == 'Deferida' %}
+                    <span class="badge bg-success fs-6">Publicada</span>
+                {% elif vaga.status == 'Indeferida' %}
+                    <span class="badge bg-danger fs-6">Recusada</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark fs-6">Aguardando Moderação</span>
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-muted">Nenhuma vaga cadastrada por enquanto.</p>
+    {% endfor %}
+</div>
+{% endblock %}

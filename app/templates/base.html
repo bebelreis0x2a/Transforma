@@ -69,7 +69,7 @@
                                     <a href="{% url 'curriculo' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Currículo</a>
                                 </li>
                                 <li class="nav-item w-100 w-lg-auto text-center">
-                                    <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Vagas</a>
+                                    <a href="{% url 'vagas_pessoa' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Vagas</a>
                                 </li>
                                 <li class="nav-item w-100 w-lg-auto text-center">
                                     <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Cursos</a>
@@ -81,10 +81,10 @@
                             {% elif request.user.empresa %}
                                 <!-- BOTÕES EXCLUSIVOS PARA EMPRESA -->
                                 <li class="nav-item w-100 w-lg-auto text-center">
-                                    <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Vagas</a>
+                                    <a href="{% url 'vagas_empresa' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Vagas</a>
                                 </li>
                                 <li class="nav-item w-100 w-lg-auto text-center">
-                                    <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Candidaturas</a>
+                                    <a href="{% url 'candidaturas_empresa' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Candidaturas</a>
                                 </li>
                             {% endif %}
 

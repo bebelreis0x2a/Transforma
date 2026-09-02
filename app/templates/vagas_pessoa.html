@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Vagas - TRANSFORMA{% endblock %}
+
+{% block content %}
+<div class="text-start">
+    <h2 class="fw-bold mb-4">Minhas Candidaturas</h2>
+    
+    {% if minhas_candidaturas %}
+        <div class="list-group mb-5">
+            {% for c in minhas_candidaturas %}
+                <div class="list-group-item d-flex justify-content-between align-items-center rounded-3 mb-2 shadow-sm border-0 bg-light p-3">
+                    <div>
+                        <h5 class="mb-1 text-primary">{{ c.vaga.nome }}</h5>
+                        <p class="mb-0 text-muted fs-6">Empresa: {{ c.vaga.empresa.nome }}</p>
+                    </div>
+                    <div>
+                        {% if c.status_vaga == 'Deferida' %}
+                            <span class="badge bg-success fs-6 p-2">Aprovada! Entre em contato com a empresa.</span>
+                        {% elif c.status_vaga == 'Indeferida' %}
+                            <span class="badge bg-danger fs-6 p-2">Não Selecionado(a)</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark fs-6 p-2">Em Análise</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted mb-5">Você ainda não se candidatou a nenhuma vaga.</p>
+    {% endif %}
+
+    <h2 class="fw-bold mb-4">Vagas Disponíveis</h2>
+    <div class="row g-3">
+        {% for vaga in vagas_disponiveis %}
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title fw-bold text-dark">{{ vaga.nome }}</h4>
+                        <h6 class="card-subtitle mb-3 text-primary">{{ vaga.empresa.nome }}</h6>
+                        <p class="card-text text-secondary">{{ vaga.descricao }}</p>
+                        {% if vaga.salario %}
+                            <p class="small text-muted"><strong>Salário:</strong> R$ {{ vaga.salario }}</p>
+                        {% endif %}
+                        <div class="mt-auto">
+                            <a href="{% url 'candidatar_vaga' vaga.id %}" class="btn btn-primary w-100 rounded-pill">Quero me candidatar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted">Nenhuma nova vaga disponível no momento.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -24,11 +24,27 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.home_view, name='home'),  # <--- Rota inicial da aplicação
     path('admin/', admin.site.urls),
+
+    #Login e Logout
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+
+    # Cadastros
     path('cadastro/pessoa/', views.cadastro_pessoa_view, name='cadastro_pessoa'),
     path('cadastro/empresa/', views.cadastro_empresa_view, name='cadastro_empresa'),
+
+    # Currículo
     path('curriculo/', views.curriculo_view, name='curriculo'),
+
+    # Rotas para Pessoa Candidata
+    path('vagas/', views.vagas_pessoa_view, name='vagas_pessoa'),
+    path('vagas/candidatar/<int:vaga_id>/', views.candidatar_vaga_view, name='candidatar_vaga'),
+
+    # Rotas para Empresa
+    path('empresa/vagas/', views.vagas_empresa_view, name='vagas_empresa'),
+    path('empresa/candidaturas/', views.candidaturas_empresa_view, name='candidaturas_empresa'),
+    path('empresa/candidaturas/status/<int:candidatura_id>/<str:novo_status>/', views.alterar_status_candidatura_view, name='alterar_status_candidatura'),
+
 ]
 
 # Servir arquivos de mídia em ambiente de desenvolvimento

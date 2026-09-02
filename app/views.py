@@ -111,3 +111,100 @@ def curriculo_view(request):
         'formacao_choices': Curriculos.FORMACAO_CHOICES, # Permite selecionar, em um input de seleções (select), as opções pré-inseridas no banco de dados!
     }
     return render(request, 'curriculo.html', context)
+
+# *** VAGAS ***
+
+# VISÃO DA PESSOA CANDIDATA
+
+@login_required
+def vagas_pessoa_view(request):
+    # Usa 'perfil', que é o related_name exato definido na model Pessoas
+    if not hasattr(request.user, 'perfil'):
+        return redirect('home')
+
+    pessoa = request.user.perfil
+
+    # Minhas candidaturas efetuadas
+    minhas_candidaturas = Candidaturas.objects.filter(pessoa=pessoa)
+    vagas_candidatadas_ids = minhas_candidaturas.values_list('vaga_id', flat=True)
+
+    # Vagas 'Deferida' que a pessoa ainda não se candidatou
+    vagas_disponiveis = Vagas.objects.filter(status='Deferida').exclude(id__in=vagas_candidatadas_ids)
+
+    context = {
+        'vagas_disponiveis': vagas_disponiveis,
+        'minhas_candidaturas': minhas_candidaturas,
+    }
+    return render(request, 'vagas_pessoa.html', context)
+
+
+@login_required
+def candidatar_vaga_view(request, vaga_id):
+    if not hasattr(request.user, 'perfil'):
+        return redirect('home')
+
+    vaga = get_object_or_404(Vagas, id=vaga_id, status='Deferida')
+    pessoa = request.user.perfil
+
+    Candidaturas.objects.get_or_create(
+        vaga=vaga, 
+        pessoa=pessoa, 
+        defaults={'status_vaga': 'Pendente'}
+    )
+    messages.success(request, f"Inscrição realizada com sucesso na vaga '{vaga.nome}'!")
+
+    return redirect('vagas_pessoa')
+
+
+# VISÃO DA EMPRESA 
+
+@login_required
+def vagas_empresa_view(request):
+    if not hasattr(request.user, 'empresa'):
+        return redirect('home')
+
+    empresa = request.user.empresa
+
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        descricao = request.POST.get('descricao')
+        salario = request.POST.get('salario') or 0.00
+
+        Vagas.objects.create(
+            empresa=empresa,
+            nome=nome,
+            descricao=descricao,
+            salario=salario,
+            status='Pendente'
+        )
+        messages.success(request, "Vaga cadastrada com sucesso! Ela aguarda aprovação do administrador.")
+        return redirect('vagas_empresa')
+
+    minhas_vagas = Vagas.objects.filter(empresa=empresa).order_by('-id')
+    return render(request, 'vagas_empresa.html', {'minhas_vagas': minhas_vagas})
+
+
+@login_required
+def candidaturas_empresa_view(request):
+    if not hasattr(request.user, 'empresa'):
+        return redirect('home')
+
+    empresa = request.user.empresa
+    candidaturas = Candidaturas.objects.filter(vaga__empresa=empresa).order_by('-id')
+
+    return render(request, 'candidaturas_empresa.html', {'candidaturas': candidaturas})
+
+
+@login_required
+def alterar_status_candidatura_view(request, candidatura_id, novo_status):
+    if not hasattr(request.user, 'empresa'):
+        return redirect('home')
+
+    candidatura = get_object_or_404(Candidaturas, id=candidatura_id, vaga__empresa=request.user.empresa)
+
+    if novo_status.capitalize() in ['Deferida', 'Indeferida']:
+        candidatura.status_vaga = novo_status.capitalize()
+        candidatura.save()
+        messages.info(request, f"Status da candidatura alterado para '{candidatura.status_vaga}'.")
+
+    return redirect('candidaturas_empresa')
