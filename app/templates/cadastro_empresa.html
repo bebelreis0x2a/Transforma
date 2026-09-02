@@ -42,7 +42,7 @@
                     <!-- FORMULÁRIO -->
                     {% load widget_tweaks %} <!-- 1. IMPORTANTE: Carrega a biblioteca no topo do arquivo -->
 
-                    <form method="POST" class="text-start">
+                    <form method="POST" enctype="multipart/form-data" class="text-start">
                         {% csrf_token %}
                         
                         {% for field in form %}
