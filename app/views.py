@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import *
 from .models import *
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 
 # CADASTROS
 
@@ -115,10 +116,8 @@ def curriculo_view(request):
 # *** VAGAS ***
 
 # VISÃO DA PESSOA CANDIDATA
-
 @login_required
 def vagas_pessoa_view(request):
-    # Usa 'perfil', que é o related_name exato definido na model Pessoas
     if not hasattr(request.user, 'perfil'):
         return redirect('home')
 
@@ -128,12 +127,32 @@ def vagas_pessoa_view(request):
     minhas_candidaturas = Candidaturas.objects.filter(pessoa=pessoa)
     vagas_candidatadas_ids = minhas_candidaturas.values_list('vaga_id', flat=True)
 
-    # Vagas 'Deferida' que a pessoa ainda não se candidatou
-    vagas_disponiveis = Vagas.objects.filter(status='Deferida').exclude(id__in=vagas_candidatadas_ids)
+    # Base de vagas disponíveis (Apenas 'Deferida' e que a pessoa ainda não se candidatou)
+    vagas_disponiveis = Vagas.objects.filter(status='Deferida').exclude(id__in=vagas_candidatadas_ids).prefetch_related('faqs')
+
+    # --- FILTROS DE BUSCA ---
+    busca = request.GET.get('busca', '')
+    salario_min = request.GET.get('salario_min', '')
+
+    if busca:
+        # Filtra se o termo está no nome da vaga, na descrição ou no nome da empresa
+        vagas_disponiveis = vagas_disponiveis.filter(
+            Q(nome__icontains=busca) | 
+            Q(descricao__icontains=busca) | 
+            Q(empresa__nome__icontains=busca)
+        )
+
+    if salario_min:
+        try:
+            vagas_disponiveis = vagas_disponiveis.filter(salario__gte=float(salario_min))
+        except ValueError:
+            pass  # Ignora se o valor digitado não for um número válido
 
     context = {
         'vagas_disponiveis': vagas_disponiveis,
         'minhas_candidaturas': minhas_candidaturas,
+        'busca': busca,
+        'salario_min': salario_min,
     }
     return render(request, 'vagas_pessoa.html', context)
 
@@ -170,14 +189,28 @@ def vagas_empresa_view(request):
         descricao = request.POST.get('descricao')
         salario = request.POST.get('salario') or 0.00
 
-        Vagas.objects.create(
+        # Cria a vaga
+        vaga = Vagas.objects.create(
             empresa=empresa,
             nome=nome,
             descricao=descricao,
             salario=salario,
             status='Pendente'
         )
-        messages.success(request, "Vaga cadastrada com sucesso! Ela aguarda aprovação do administrador.")
+
+        # Captura as perguntas e respostas dinâmicas do FAQ
+        perguntas = request.POST.getlist('faq_pergunta[]') # Isso funciona porque, em candidaturas_empresa.html, no JS, criamos uma lista com os FAQs
+        respostas = request.POST.getlist('faq_resposta[]')
+
+        for pergunta, resposta in zip(perguntas, respostas):
+            if pergunta.strip() and resposta.strip():
+                FAQ.objects.create(
+                    vaga=vaga,
+                    pergunta=pergunta.strip(),
+                    resposta=resposta.strip()
+                )
+
+        messages.success(request, "Vaga e FAQs cadastrados com sucesso! Aguardando aprovação do administrador.")
         return redirect('vagas_empresa')
 
     minhas_vagas = Vagas.objects.filter(empresa=empresa).order_by('-id')

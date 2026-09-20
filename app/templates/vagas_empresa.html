@@ -19,7 +19,23 @@
             <label class="form-label fw-semibold">Salário (Opcional)</label>
             <input type="number" step="0.01" name="salario" class="form-control" placeholder="0.00">
         </div>
-        <button type="submit" class="btn btn-success rounded-pill px-4">Submeter Vaga</button>
+
+        <!-- SEÇÃO DE FAQ -->
+        <hr class="my-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold m-0"><i class="bi bi-question-circle"></i> FAQ da Vaga (Perguntas Frequentes)</h5>
+            <button type="button" class="btn btn-outline-primary btn-sm rounded-pill" id="btn-add-faq">
+                + Adicionar Pergunta
+            </button>
+        </div>
+
+        <div id="faq-container">
+            <!-- As perguntas serão inseridas aqui via JS -->
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success rounded-pill px-4">Submeter Vaga</button>
+        </div>
     </form>
 
     <h2 class="fw-bold mb-3">Vagas Cadastradas</h2>
@@ -28,6 +44,7 @@
             <div>
                 <h5 class="fw-bold mb-1">{{ vaga.nome }}</h5>
                 <p class="mb-0 text-muted">{{ vaga.descricao|truncatewords:15 }}</p>
+                <small class="text-primary"><i class="bi bi-patch-question"></i> {{ vaga.faqs.count }} Pergunta(s) no FAQ</small>
             </div>
             <div>
                 {% if vaga.status == 'Deferida' %}
@@ -43,4 +60,32 @@
         <p class="text-muted">Nenhuma vaga cadastrada por enquanto.</p>
     {% endfor %}
 </div>
+
+<!-- JavaScript para criar/remover campos de FAQ no formulário -->
+<script>
+document.getElementById('btn-add-faq').addEventListener('click', function() {
+    const container = document.getElementById('faq-container');
+    const faqItem = document.createElement('div');
+    faqItem.classList.add('card', 'p-3', 'mb-3', 'border-0', 'shadow-sm', 'bg-white', 'faq-item');
+    
+    faqItem.innerHTML = `
+        <div class="d-flex justify-content-between mb-2">
+            <span class="fw-bold text-secondary small">Pergunta Frequente</span>
+            <button type="button" class="btn-close btn-sm remove-faq" aria-label="Remover"></button>
+        </div>
+        <div class="mb-2">
+            <input type="text" name="faq_pergunta[]" class="form-control" placeholder="Ex: Qual o horário de trabalho?" required>
+        </div>
+        <div>
+            <textarea name="faq_resposta[]" class="form-control" rows="2" placeholder="Ex: De segunda a sexta, das 8h às 17h." required></textarea>
+        </div>
+    `;
+
+    container.appendChild(faqItem);
+
+    faqItem.querySelector('.remove-faq').addEventListener('click', function() {
+        faqItem.remove();
+    });
+});
+</script>
 {% endblock %}
