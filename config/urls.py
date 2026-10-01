@@ -45,6 +45,18 @@ urlpatterns = [
     path('empresa/candidaturas/', views.candidaturas_empresa_view, name='candidaturas_empresa'),
     path('empresa/candidaturas/status/<int:candidatura_id>/<str:novo_status>/', views.alterar_status_candidatura_view, name='alterar_status_candidatura'),
 
+    # Cursos - Visão apenas para Pessoas
+    path('cursos/', views.cursos_pessoa_view, name='cursos_pessoa'),
+    path('cursos/inscrever/<int:curso_id>/', views.inscrever_curso_view, name='inscrever_curso'),
+
+    # SUGESTÕES
+    path('sugestoes/', views.sugestoes_pessoa_view, name='sugestoes_pessoa'),
+
+    # Avaliações
+    path('avaliacoes/', views.avaliacoes_view, name='avaliacoes'),
+
+    # Informações
+    path('informacoes/', views.informacoes_view, name='informacoes'),
 ]
 
 # Servir arquivos de mídia em ambiente de desenvolvimento

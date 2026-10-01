@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import *
-
 # Em Django, posso criar os formulários com Python!
 
 class CadastroPessoaForm(forms.ModelForm):
@@ -82,3 +81,27 @@ class CadastroEmpresaForm(forms.ModelForm):
         if commit:
             empresa.save()
         return empresa
+
+# Sugestões
+class SugestaoForm(forms.ModelForm):
+    class Meta:
+        model = Sugestoes
+        fields = ['tipo', 'nome', 'descricao', 'link']
+        widgets = {
+            'tipo': forms.Select(attrs={'class': 'form-select'}),
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do curso ou vaga'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Descrição detalhada'}),
+            'link': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'https://...'}),
+        }
+
+# Avaliações
+class AvaliacaoForm(forms.ModelForm):
+    class Meta:
+        model = Avaliacoes
+        fields = ['nome', 'descricao', 'pontos_positivos', 'pontos_negativos']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Título ou assunto da avaliação'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Descrição geral da sua experiência'}),
+            'pontos_positivos': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'O que você mais gostou no site?'}),
+            'pontos_negativos': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'O que precisa ser melhorado?'}),
+        }

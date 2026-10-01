@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}Cursos - TRANSFORMA{% endblock %}
+
+{% block content %}
+<div class="text-start">
+    <h2 class="fw-bold mb-4">Meus Cursos</h2>
+    
+    {% if minhas_inscricoes %}
+        <div class="list-group mb-5">
+            {% for i in minhas_inscricoes %}
+                <div class="list-group-item d-flex justify-content-between align-items-center rounded-3 mb-2 shadow-sm border-0 bg-light p-3">
+                    <div>
+                        <h5 class="mb-1 text-primary">{{ i.curso.nome }}</h5>
+                        {% if i.curso.carga_horaria %}
+                            <p class="mb-0 text-muted fs-6"><i class="bi bi-clock me-1"></i>Carga Horária: {{ i.curso.carga_horaria }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        {% if i.status_curso == 'Concluido' %}
+                            <span class="badge bg-success fs-6 p-2">Concluído</span>
+                        {% else %}
+                            <span class="badge bg-primary fs-6 p-2">Em Andamento</span>
+                        {% endif %}
+
+                        {% if i.curso.link_inscricao %}
+                            <a href="{{ i.curso.link_inscricao }}" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                Acessar Curso <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted mb-5">Você ainda não se inscreveu em nenhum curso.</p>
+    {% endif %}
+
+    <!-- BARRA DE PESQUISA E FILTROS -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold m-0">Cursos Disponíveis</h2>
+    </div>
+
+    <form method="GET" class="bg-light p-3 rounded-4 shadow-sm mb-4">
+        <div class="row g-2">
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                    <input type="text" name="busca" value="{{ busca }}" class="form-control border-start-0" placeholder="Buscar por curso, área ou palavra-chave...">
+                </div>
+            </div>
+            <div class="col-md-3 d-flex gap-2">
+                <button type="submit" class="btn btn-primary rounded-pill w-100">Buscar</button>
+                {% if busca %}
+                    <a href="{% url 'cursos_pessoa' %}" class="btn btn-outline-secondary rounded-pill" title="Limpar Filtro">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+    <!-- LISTA DE CURSOS -->
+    <div class="row g-3">
+        {% for curso in cursos_disponiveis %}
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title fw-bold text-dark">{{ curso.nome }}</h4>
+                        {% if curso.carga_horaria %}
+                            <h6 class="card-subtitle mb-2 text-primary"><i class="bi bi-clock me-1"></i>{{ curso.carga_horaria }}</h6>
+                        {% endif %}
+                        <p class="card-text text-secondary mt-2">{{ curso.descricao }}</p>
+
+                        <div class="mt-auto d-flex flex-column gap-2 pt-3">
+                            {% if curso.faqs.all %}
+                                <button type="button" class="btn btn-outline-info rounded-pill w-100" data-bs-toggle="modal" data-bs-target="#modalFaqCurso{{ curso.id }}">
+                                    <i class="bi bi-chat-dots me-1"></i> Dúvidas Frequentes (FAQ)
+                                </button>
+                            {% endif %}
+                            <a href="{% url 'inscrever_curso' curso.id %}" class="btn btn-primary w-100 rounded-pill">Quero me inscrever</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL CHAT DE FAQ PARA CADA CURSO -->
+            {% if curso.faqs.all %}
+            <div class="modal fade" id="modalFaqCurso{{ curso.id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content rounded-4 border-0 shadow">
+                        <div class="modal-header bg-primary text-white rounded-top-4">
+                            <h5 class="modal-title fw-bold"><i class="bi bi-robot me-2"></i>FAQ - {{ curso.nome }}</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-body bg-light d-flex flex-column gap-3 p-3" style="min-height: 350px;">
+                            <div class="align-self-start bg-white p-3 rounded-4 shadow-sm border text-dark" style="max-width: 85%;">
+                                <small class="fw-bold text-primary d-block mb-1">Assistente TRANSFORMA</small>
+                                Olá! Clique em uma pergunta para ver as informações sobre o curso:
+                            </div>
+
+                            <div class="d-flex flex-column gap-2 align-items-end my-2">
+                                {% for faq in curso.faqs.all %}
+                                    <button type="button" class="btn btn-primary btn-sm rounded-pill text-start shadow-sm btn-faq-pergunta" 
+                                            data-resposta-id="resposta-curso-{{ faq.id }}">
+                                        <i class="bi bi-question-circle me-1"></i> {{ faq.pergunta }}
+                                    </button>
+
+                                    <div id="resposta-curso-{{ faq.id }}" class="align-self-start bg-white p-3 rounded-4 shadow-sm border text-dark d-none my-1" style="max-width: 85%;">
+                                        <small class="fw-bold text-success d-block mb-1"><i class="bi bi-info-circle me-1"></i> Informação do Curso</small>
+                                        {{ faq.resposta }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="modal-footer bg-white rounded-bottom-4">
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        {% empty %}
+            <div class="col-12 text-center py-4">
+                <p class="text-muted fs-5 mb-0">Nenhum curso disponível no momento.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const botoesPergunta = document.querySelectorAll('.btn-faq-pergunta');
+
+    botoesPergunta.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const respostaId = this.getAttribute('data-resposta-id');
+            const elementoResposta = document.getElementById(respostaId);
+
+            if (elementoResposta) {
+                elementoResposta.classList.toggle('d-none');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

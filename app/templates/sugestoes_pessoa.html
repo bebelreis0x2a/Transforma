@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Sugestões de Vagas e Cursos</h2>
+    
+    <!-- Formulário de Envio -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Enviar Nova Sugestão</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Tipo de Sugestão</label>
+                    {{ form.tipo }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nome/Título</label>
+                    {{ form.nome }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Descrição</label>
+                    {{ form.descricao }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Link/URL</label>
+                    {{ form.link }}
+                </div>
+                <button type="submit" class="btn btn-success">Enviar Sugestão</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabela de Acompanhamento -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">Minhas Sugestões Enviadas</h5>
+        </div>
+        <div class="card-body">
+            {% if minhas_sugestoes %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Nome</th>
+                                <th>Data de Envio</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sugestao in minhas_sugestoes %}
+                                <tr>
+                                    <td><span class="badge bg-info text-dark">{{ sugestao.tipo }}</span></td>
+                                    <td>{{ sugestao.nome|default:"Sem título" }}</td>
+                                    <td>{{ sugestao.data_envio|date:"d/m/Y H:i" }}</td>
+                                    <td>
+                                        {% if sugestao.link %}
+                                            <a href="{{ sugestao.link }}" target="_blank" class="btn btn-sm btn-outline-primary">Acessar</a>
+                                        {% else %}
+                                            <span class="text-muted">N/A</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted mb-0">Você ainda não enviou nenhuma sugestão.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

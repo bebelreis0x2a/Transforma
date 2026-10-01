@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+    <!-- Cabeçalho da Página -->
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-secondary">
+        <div class="col-md-8 px-0">
+            <h1 class="display-4 fw-bold">Central de Informações</h1>
+            <p class="lead my-3">Acompanhe avisos jurídicos, atualizações da plataforma, novidades e comunicados oficiais publicados pela administração.</p>
+        </div>
+    </div>
+
+    <!-- Barra de Pesquisa -->
+    <form method="GET" class="row mb-4">
+        <div class="col-md-10 col-sm-9 mb-2 mb-sm-0">
+            <input type="text" name="busca" class="form-control" placeholder="Pesquisar por assunto ou palavra-chave..." value="{{ busca }}">
+        </div>
+        <div class="col-md-2 col-sm-3">
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+    </form>
+
+    <!-- Lista de Postagens -->
+    {% if postagens %}
+        <div class="row">
+            {% for post in postagens %}
+                <div class="col-12 mb-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary">Notícia / Comunicado</span>
+                                <small class="text-muted"><i class="bi bi-clock"></i> {{ post.data_post|date:"d/m/Y \à\s H:i" }}</small>
+                            </div>
+                            <h3 class="card-title h4 text-dark">{{ post.titulo }}</h3>
+                            <hr>
+                            <p class="card-text text-secondary style-content" style="white-space: pre-line;">
+                                {{ post.conteudo }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center py-4" role="alert">
+            <h5 class="alert-heading">Nenhuma publicação encontrada</h5>
+            <p class="mb-0">Ainda não há comunicados cadastrados ou nenhum resultado correspondeu à sua pesquisa.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

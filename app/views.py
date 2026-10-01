@@ -241,3 +241,132 @@ def alterar_status_candidatura_view(request, candidatura_id, novo_status):
         messages.info(request, f"Status da candidatura alterado para '{candidatura.status_vaga}'.")
 
     return redirect('candidaturas_empresa')
+
+# *** CURSOS (VISÃO DA PESSOA CANDIDATA) ***
+
+@login_required
+def cursos_pessoa_view(request):
+    if not hasattr(request.user, 'perfil'):
+        messages.error(request, "Acesso restrito apenas para candidatos.")
+        return redirect('home')
+
+    pessoa = request.user.perfil
+
+    # Minhas inscrições em cursos
+    minhas_inscricoes = InscricoesCursos.objects.filter(pessoa=pessoa)
+    cursos_inscritos_ids = minhas_inscricoes.values_list('curso_id', flat=True)
+
+    # Cursos disponíveis (exclui os que a pessoa já se inscreveu)
+    cursos_disponiveis = Cursos.objects.exclude(id__in=cursos_inscritos_ids).prefetch_related('faqs')
+
+    # Filtro de Busca
+    busca = request.GET.get('busca', '')
+    if busca:
+        cursos_disponiveis = cursos_disponiveis.filter(
+            Q(nome__icontains=busca) | Q(descricao__icontains=busca)
+        )
+
+    context = {
+        'minhas_inscricoes': minhas_inscricoes,
+        'cursos_disponiveis': cursos_disponiveis,
+        'busca': busca,
+    }
+    return render(request, 'cursos_pessoa.html', context)
+
+
+@login_required
+def inscrever_curso_view(request, curso_id):
+    if not hasattr(request.user, 'perfil'):
+        return redirect('home')
+
+    curso = get_object_or_404(Cursos, id=curso_id)
+    pessoa = request.user.perfil
+
+    InscricoesCursos.objects.get_or_create(
+        curso=curso,
+        pessoa=pessoa,
+        defaults={'status_curso': 'Cursando'}
+    )
+    messages.success(request, f"Inscrição realizada com sucesso no curso '{curso.nome}'!")
+
+    return redirect('cursos_pessoa')
+
+#===========#
+# SUGESTÕES #
+#===========#
+
+@login_required
+def sugestoes_pessoa_view(request):
+    # Restringe o acesso apenas para usuários do tipo Pessoa
+    if not hasattr(request.user, 'perfil'):
+        messages.error(request, "Acesso restrito apenas para candidatos/pessoas.")
+        return redirect('home')
+
+    pessoa = request.user.perfil
+
+    if request.method == 'POST':
+        form = SugestaoForm(request.POST)
+        if form.is_valid():
+            sugestao = form.save(commit=False)
+            sugestao.pessoa = pessoa  # Vincula a sugestão ao perfil logado
+            sugestao.save()
+            messages.success(request, "Sua sugestão foi enviada com sucesso e será analisada pelo Admin!")
+            return redirect('sugestoes_pessoa')
+    else:
+        form = SugestaoForm()
+
+    # Busca apenas as sugestões criadas pela própria pessoa
+    minhas_sugestoes = Sugestoes.objects.filter(pessoa=pessoa).order_by('-data_envio')
+
+    context = {
+        'form': form,
+        'minhas_sugestoes': minhas_sugestoes,
+    }
+    return render(request, 'sugestoes_pessoa.html', context)
+
+#============#
+# Avaliações #
+#============#
+
+@login_required
+def avaliacoes_view(request):
+    if request.method == 'POST':
+        form = AvaliacaoForm(request.POST)
+        if form.is_valid():
+            avaliacao = form.save(commit=False)
+            avaliacao.usuario = request.user  # Associa a avaliação ao User logado
+            avaliacao.save()
+            messages.success(request, "Sua avaliação foi enviada com sucesso! Agradecemos o feedback.")
+            return redirect('avaliacoes')
+    else:
+        form = AvaliacaoForm()
+
+    # Busca apenas as avaliações feitas pelo próprio usuário conectado
+    minhas_avaliacoes = Avaliacoes.objects.filter(usuario=request.user).order_by('-data_envio')
+
+    context = {
+        'form': form,
+        'minhas_avaliacoes': minhas_avaliacoes,
+    }
+    return render(request, 'avaliacoes.html', context)
+    
+#--------------#
+# INFORMAÇÕES! #
+#--------------#
+
+def informacoes_view(request):
+    # Filtra apenas as postagens marcadas como "Publicado" pelo Admin
+    postagens = Postagens.objects.filter(status='Publicado').order_by('-data_post')
+    
+    # Opcional: filtro de busca na tela de informações
+    busca = request.GET.get('busca', '')
+    if busca:
+        postagens = postagens.filter(
+            Q(titulo__icontains=busca) | Q(conteudo__icontains=busca)
+        )
+
+    context = {
+        'postagens': postagens,
+        'busca': busca,
+    }
+    return render(request, 'informacoes.html', context)

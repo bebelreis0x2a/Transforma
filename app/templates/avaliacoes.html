@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Avaliações - TRANSFORMA{% endblock %}
+
+{% block content %}
+<div class="container text-start py-2">
+    <h2 class="fw-bold mb-4 text-center">Avaliação da Plataforma</h2>
+
+    <!-- Formulário de Nova Avaliação -->
+    <div class="card border-0 shadow-sm rounded-4 mb-5">
+        <div class="card-header bg-primary text-white rounded-top-4 py-3">
+            <h5 class="mb-0 fw-bold"><i class="bi bi-chat-left-text me-2"></i>Enviar Feedback Construtivo</h5>
+        </div>
+        <div class="card-body p-4">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Título / Assunto</label>
+                    {{ form.nome }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Descrição Geral</label>
+                    {{ form.descricao }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-success"><i class="bi bi-plus-circle me-1"></i>Pontos Positivos</label>
+                        {{ form.pontos_positivos }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-danger"><i class="bi bi-dash-circle me-1"></i>Pontos a Melhorar</label>
+                        {{ form.pontos_negativos }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold mt-2">
+                    <i class="bi bi-send me-2"></i>Enviar Avaliação
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Histórico de Avaliações Enviadas -->
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-header bg-dark text-white rounded-top-4 py-3">
+            <h5 class="mb-0 fw-bold"><i class="bi bi-clock-history me-2"></i>Minhas Avaliações Enviadas</h5>
+        </div>
+        <div class="card-body p-4">
+            {% if minhas_avaliacoes %}
+                <div class="row g-3">
+                    {% for item in minhas_avaliacoes %}
+                        <div class="col-12">
+                            <div class="border rounded-3 p-3 bg-light">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="fw-bold text-primary mb-0">{{ item.nome|default:"Sem título" }}</h6>
+                                    <span class="badge bg-secondary">{{ item.data_envio|date:"d/m/Y H:i" }}</span>
+                                </div>
+                                {% if item.descricao %}
+                                    <p class="mb-2 text-dark">{{ item.descricao }}</p>
+                                {% endif %}
+                                <div class="row mt-2 pt-2 border-top">
+                                    {% if item.pontos_positivos %}
+                                        <div class="col-md-6">
+                                            <small class="text-success fw-bold">Pontos Positivos:</small>
+                                            <p class="small text-muted mb-0">{{ item.pontos_positivos }}</p>
+                                        </div>
+                                    {% endif %}
+                                    {% if item.pontos_negativos %}
+                                        <div class="col-md-6">
+                                            <small class="text-danger fw-bold">Pontos a Melhorar:</small>
+                                            <p class="small text-muted mb-0">{{ item.pontos_negativos }}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted text-center my-3">Você ainda não enviou nenhuma avaliação.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

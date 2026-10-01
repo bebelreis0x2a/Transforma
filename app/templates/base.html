@@ -72,10 +72,10 @@
                                     <a href="{% url 'vagas_pessoa' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Vagas</a>
                                 </li>
                                 <li class="nav-item w-100 w-lg-auto text-center">
-                                    <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Cursos</a>
+                                    <a href="{% url 'cursos_pessoa' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Cursos</a>
                                 </li>
                                 <li class="nav-item w-100 w-lg-auto text-center">
-                                    <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Sugestões</a>
+                                    <a href="{% url 'sugestoes_pessoa' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Sugestões</a>
                                 </li>
 
                             {% elif request.user.empresa %}
@@ -90,14 +90,14 @@
 
                             <!-- BOTÃO COMUM A TODOS OS USUÁRIOS LOGADOS -->
                             <li class="nav-item w-100 w-lg-auto text-center">
-                                <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Avaliações</a>
+                                <a href="{% url 'avaliacoes' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Avaliações</a>
                             </li>
 
                         {% endif %}
 
                         <!-- BOTÃO PÚBLICO (TODOS VÊEM) -->
                         <li class="nav-item w-100 w-lg-auto text-center">
-                            <a href="#" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Informações</a>
+                            <a href="{% url 'informacoes' %}" class="btn btn-light rounded-pill px-3 fw-semibold text-dark shadow-sm w-100">Informações</a>
                         </li>
 
                     </ul>
