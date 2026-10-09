@@ -16,11 +16,6 @@
                         {% endif %}
                     </div>
                     <div class="d-flex align-items-center gap-2">
-                        {% if i.status_curso == 'Concluido' %}
-                            <span class="badge bg-success fs-6 p-2">Concluído</span>
-                        {% else %}
-                            <span class="badge bg-primary fs-6 p-2">Em Andamento</span>
-                        {% endif %}
 
                         {% if i.curso.link_inscricao %}
                             <a href="{{ i.curso.link_inscricao }}" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">

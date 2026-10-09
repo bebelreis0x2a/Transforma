@@ -251,6 +251,9 @@ class Avaliacoes(models.Model):
     descricao = models.TextField(blank=True, null=True, verbose_name="Descrição geral")
     pontos_positivos = models.TextField(blank=True, null=True, verbose_name="Pontos Positivos")
     pontos_negativos = models.TextField(blank=True, null=True, verbose_name="Pontos Negativos")
+    
+    resposta_admin = models.TextField(blank=True, null=True, verbose_name="Resposta do Administrador")
+
     data_envio = models.DateTimeField(auto_now_add=True, verbose_name="Data de envio") # O "auto_now_add = True" configura a data da postagem com a data e hora exatas no momento que o objeto é criado/a postagem é enviada.
 
     def __str__(self):

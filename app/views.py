@@ -213,7 +213,8 @@ def vagas_empresa_view(request):
         messages.success(request, "Vaga e FAQs cadastrados com sucesso! Aguardando aprovação do administrador.")
         return redirect('vagas_empresa')
 
-    minhas_vagas = Vagas.objects.filter(empresa=empresa).order_by('-id')
+    # Adicionado .prefetch_related('faqs') para trazer os FAQs vinculados
+    minhas_vagas = Vagas.objects.filter(empresa=empresa).prefetch_related('faqs').order_by('-id')
     return render(request, 'vagas_empresa.html', {'minhas_vagas': minhas_vagas})
 
 

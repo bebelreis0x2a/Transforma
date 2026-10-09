@@ -2,18 +2,18 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Sugestões de Vagas e Cursos</h2>
+    <h2>Sugestões de novas vagas e cursos</h2>
     
     <!-- Formulário de Envio -->
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">Enviar Nova Sugestão</h5>
+            <h5 class="mb-0">Enviar nova sugestão</h5>
         </div>
         <div class="card-body">
             <form method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label class="form-label">Tipo de Sugestão</label>
+                    <label class="form-label">Tipo de sugestão</label>
                     {{ form.tipo }}
                 </div>
                 <div class="mb-3">

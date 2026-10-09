@@ -79,6 +79,71 @@
         </div>
     </div>
 
+    <!-- Importação do jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        // 1. MÁSCARA E VALIDAÇÃO DE CNPJ (XX.XXX.XXX/XXXX-XX)
+        $('input[name="cnpj"]').on('input', function() {
+            let v = $(this).val().replace(/\D/g, ''); // Remove não dígitos
+            if (v.length > 14) v = v.slice(0, 14);
+            
+            v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+            v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            v = v.replace(/(\d{4})(\d)/, '$1-$2');
+            
+            $(this).val(v);
+        });
+
+        // 2. MÁSCARA E VALIDAÇÃO DE TELEFONE ((XX) XXXXX-XXXX)
+        $('input[name="telefone"]').on('input', function() {
+            let v = $(this).val().replace(/\D/g, ''); // Remove não dígitos
+            if (v.length > 11) v = v.slice(0, 11);
+
+            v = v.replace(/^(\d{2})(\d)/g, '($1) $2');
+            v = v.replace(/(\d{5})(\d)/, '$1-$2');
+
+            $(this).val(v);
+        });
+
+        // 3. VALIDAÇÃO DE SENHA
+        const $senha = $('input[name="password"], input[name="senha"]');
+        const $confirmSenha = $('input[name="password_confirm"], input[name="confirmar_senha"]');
+        
+        $confirmSenha.after('<small id="senha-feedback" class="d-block mt-1 fw-bold"></small>');
+        const $feedback = $('#senha-feedback');
+
+        function checarSenhas() {
+            const pass = $senha.val();
+            const confirm = $confirmSenha.val();
+
+            if (!confirm) {
+                $feedback.text('');
+                return true;
+            }
+
+            if (pass === confirm) {
+                $feedback.text('✓ As senhas coincidem').css('color', 'green');
+                return true;
+            } else {
+                $feedback.text('✕ As senhas não coincidem').css('color', 'red');
+                return false;
+            }
+        }
+
+        $senha.add($confirmSenha).on('keyup change', checarSenhas);
+
+        $('form').on('submit', function(e) {
+            if (!checarSenhas()) {
+                e.preventDefault();
+                alert('Por favor, verifique a confirmação de senha.');
+            }
+        });
+    });
+    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
