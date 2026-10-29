@@ -132,6 +132,83 @@
             </div>
         {% endfor %}
     </div>
+<!-- SEÇÃO DE VAGAS SUGERIDAS (Criadas pelo Admin) -->
+    {% if vagas_sugeridas %}
+    <br><hr>
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <h3 class="fw-bold m-0 text-primary"><i class="bi bi-star-fill me-2"></i>Vagas Sugeridas</h3>
+        </div>
+
+        <div class="row g-3 mb-5">
+            {% for vaga in vagas_sugeridas %}
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-3 bg-primary-subtle">
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="card-title fw-bold text-dark">{{ vaga.nome }}</h4>
+                            <h6 class="card-subtitle mb-3 text-primary">{{ vaga.empresa.nome }} (Destaque)</h6>
+                            <p class="card-text text-secondary">{{ vaga.descricao }}</p>
+                            {% if vaga.salario %}
+                                <p class="small text-muted"><strong>Salário:</strong> R$ {{ vaga.salario }}</p>
+                            {% endif %}
+
+                            <div class="mt-auto d-flex flex-column gap-2">
+                                {% if vaga.faqs.all %}
+                                    <!-- ALTERADO AQUI: Adicionado '-sugerida' no final do id do modal -->
+                                    <button type="button" class="btn btn-outline-primary rounded-pill w-100" data-bs-toggle="modal" data-bs-target="#modalFaq-sugerida-{{ vaga.id }}">
+                                        <i class="bi bi-chat-dots me-1"></i> Tirar dúvidas (FAQ)
+                                    </button>
+                                {% endif %}
+                                
+                                <!-- BOTÃO QUE REDIRECIONA PARA O LINK EXTERNO DA VAGA SUGERIDA -->
+                                {% if vaga.link %}
+                                    <a href="{{ vaga.link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                                        <i class="bi bi-box-arrow-up-right me-1"></i> Acessar vaga no site
+                                    </a>
+                                {% else %}
+                                    <button class="btn btn-secondary w-100 rounded-pill" disabled>Link Indisponível</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL FAQ PARA VAGAS SUGERIDAS -->
+                {% if vaga.faqs.all %}
+                <!-- ALTERADO AQUI: ID do modal correspondente ajustado para '-sugerida-' e os IDs internos para não conflitar com as FAQs comuns -->
+                <div class="modal fade" id="modalFaq-sugerida-{{ vaga.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content rounded-4 border-0 shadow">
+                            <div class="modal-header bg-primary text-white rounded-top-4">
+                                <h5 class="modal-title fw-bold"><i class="bi bi-robot me-2"></i>FAQ - {{ vaga.nome }}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bg-light d-flex flex-column gap-3 p-3" style="min-height: 350px;">
+                                <div class="align-self-start bg-white p-3 rounded-4 shadow-sm border text-dark" style="max-width: 85%;">
+                                    <small class="fw-bold text-primary d-block mb-1">Assistente TRANSFORMA</small>
+                                    Olá! Selecione uma das perguntas abaixo para ver a resposta:
+                                </div>
+                                <div class="d-flex flex-column gap-2 align-items-end my-2">
+                                    {% for faq in vaga.faqs.all %}
+                                        <button type="button" class="btn btn-primary btn-sm rounded-pill text-start shadow-sm btn-faq-pergunta" data-resposta-id="resposta-sug-{{ vaga.id }}-{{ faq.id }}">
+                                            <i class="bi bi-question-circle me-1"></i> {{ faq.pergunta }}
+                                        </button>
+                                        <div id="resposta-sug-{{ vaga.id }}-{{ faq.id }}" class="align-self-start bg-white p-3 rounded-4 shadow-sm border text-dark d-none my-1" style="max-width: 85%;">
+                                            <small class="fw-bold text-success d-block mb-1"><i class="bi bi-building"></i> Resposta</small>
+                                            {{ faq.resposta }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-white rounded-bottom-4">
+                                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>
 
 <script>

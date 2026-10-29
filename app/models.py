@@ -180,6 +180,10 @@ class Vagas(models.Model):
     empresa = models.ForeignKey('Empresas', on_delete=models.CASCADE, related_name='vagas', verbose_name="Empresa") # Related_name é utilizado para a consulta inversa de um registro, permitindo usar a função empresa.vagas.all()!
     nome = models.CharField(max_length=100, verbose_name="Nome da vaga")
     descricao = models.TextField(verbose_name="Descrição")
+    
+    # NOVO CAMPO: Link externo da vaga sugerida
+    link = models.URLField(max_length=300, blank=True, null=True, verbose_name="Link de Inscrição / Vaga Externa")
+    
     salario = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, blank=True, null=True, verbose_name="Salário")
     status = models.CharField(
         max_length=20, 

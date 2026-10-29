@@ -127,16 +127,15 @@ def vagas_pessoa_view(request):
     minhas_candidaturas = Candidaturas.objects.filter(pessoa=pessoa)
     vagas_candidatadas_ids = minhas_candidaturas.values_list('vaga_id', flat=True)
 
-    # Base de vagas disponíveis (Apenas 'Deferida' e que a pessoa ainda não se candidatou)
-    vagas_disponiveis = Vagas.objects.filter(status='Deferida').exclude(id__in=vagas_candidatadas_ids).prefetch_related('faqs')
+    # Base geral de vagas disponíveis ('Deferida' e que a pessoa não se candidatou)
+    vagas_base = Vagas.objects.filter(status='Deferida').exclude(id__in=vagas_candidatadas_ids).prefetch_related('faqs')
 
     # --- FILTROS DE BUSCA ---
     busca = request.GET.get('busca', '')
     salario_min = request.GET.get('salario_min', '')
 
     if busca:
-        # Filtra se o termo está no nome da vaga, na descrição ou no nome da empresa
-        vagas_disponiveis = vagas_disponiveis.filter(
+        vagas_base = vagas_base.filter(
             Q(nome__icontains=busca) | 
             Q(descricao__icontains=busca) | 
             Q(empresa__nome__icontains=busca)
@@ -144,11 +143,16 @@ def vagas_pessoa_view(request):
 
     if salario_min:
         try:
-            vagas_disponiveis = vagas_disponiveis.filter(salario__gte=float(salario_min))
+            vagas_base = vagas_base.filter(salario__gte=float(salario_min))
         except ValueError:
-            pass  # Ignora se o valor digitado não for um número válido
+            pass
+
+    # Separa as vagas: se a empresa associada pertencer a um superuser/admin, vai para "vagas sugeridas"
+    vagas_sugeridas = vagas_base.filter(empresa__usuario__is_superuser=True)
+    vagas_disponiveis = vagas_base.filter(empresa__usuario__is_superuser=False)
 
     context = {
+        'vagas_sugeridas': vagas_sugeridas,
         'vagas_disponiveis': vagas_disponiveis,
         'minhas_candidaturas': minhas_candidaturas,
         'busca': busca,
